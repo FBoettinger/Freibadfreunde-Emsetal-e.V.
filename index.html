@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Freibadfreunde Emsetal e.V. – Aktuelles, Anträge, Spenden und kompakte Informationen für Smartphone und Desktop." />
+  <title>Freibadfreunde Emsetal e.V.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="site-shell">
+    <section class="hero-stage section-box" aria-labelledby="verein-name">
+      <div id="hero-left" class="hero-note hero-note--left"></div>
+
+      <div class="logo-stage">
+        <div class="logo-connector logo-connector--top" aria-hidden="true"></div>
+        <div class="logo-hexagon logo-hexagon--logo">
+          <img
+            src="logo-freibadfreunde-emsetal.png"
+            alt="Logo Freibadfreunde Emsetal e.V."
+            class="site-logo"
+          />
+          <h1 id="verein-name" class="visually-hidden">Freibadfreunde Emsetal e.V.</h1>
+        </div>
+        <div id="floating-chip" class="floating-chip"></div>
+      </div>
+
+      <div id="hero-right" class="hero-note hero-note--right"></div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="news-stage section-box" aria-labelledby="aktuelles-title">
+      <div class="section-title-wrap">
+        <p class="section-kicker">Info Block</p>
+        <h2 id="aktuelles-title" class="section-title">Aktuelles &amp; Information</h2>
+      </div>
+      <div id="news-list" class="news-list" aria-live="polite"></div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="action-stage section-box" aria-labelledby="spenden-title">
+      <div id="doc-left" class="doc-slot"></div>
+
+      <div class="donation-center">
+        <p class="section-kicker">Unterstützen</p>
+        <h2 id="spenden-title" class="section-title section-title--center">Spenden</h2>
+        <div id="donation-lines" class="donation-lines"></div>
+        <div class="donation-actions">
+          <a id="donation-link" class="btn btn--primary" href="#">Jetzt spenden</a>
+          <button id="donation-info-btn" class="btn btn--ghost" type="button">Infos einblenden</button>
+        </div>
+        <div id="donation-info" class="donation-info is-hidden"></div>
+      </div>
+
+      <div id="doc-right" class="doc-slot"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Freibadfreunde Emsetal e.V.</strong></p>
+    <p class="footer__small">© <span id="current-year"></span> · mobilfreundlich, kompakt und leicht aktualisierbar</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
