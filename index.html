@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Freibadfreunde Emsetal e.V. – Aktuelles, Anträge, Spenden und kompakte Informationen für Smartphone und Desktop." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Freibadfreunde Emsetal e.V. – mobil optimierte Startseite mit direkten Zugängen zu Mitgliedsantrag, Fördervereinbarung, Spenden, Kontakt sowie Aktuelles." />
   <title>Freibadfreunde Emsetal e.V.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,60 +11,70 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="site-shell">
-    <section class="hero-stage section-box" aria-labelledby="verein-name">
-      <div id="hero-left" class="hero-note hero-note--left"></div>
+  <main class="home-shell">
+    <section class="orbit-stage" aria-labelledby="verein-name">
+      <div class="orbit-grid">
+        <button class="orbit-card orbit-card--membership" type="button" data-modal-key="membership" aria-haspopup="dialog">
+          <span class="orbit-card__tag">Mitmachen</span>
+          <h2 class="orbit-card__title">Mitglied werden</h2>
+          <p class="orbit-card__text">Antrag, SEPA-Mandat und alle wichtigen Angaben kompakt öffnen.</p>
+          <span class="orbit-card__cta">Details öffnen</span>
+        </button>
 
-      <div class="logo-stage">
-        <div class="logo-connector logo-connector--top" aria-hidden="true"></div>
-        <div class="logo-hexagon logo-hexagon--logo">
+        <button class="orbit-card orbit-card--news" type="button" data-modal-key="news" aria-haspopup="dialog">
+          <span class="orbit-card__tag">Bleiben Sie dran</span>
+          <h2 class="orbit-card__title">Infos &amp; Aktuelles</h2>
+          <p class="orbit-card__text">Neuigkeiten, Hinweise und kurze Vereinsinformationen auf einen Blick.</p>
+          <span class="orbit-card__cta">Details öffnen</span>
+        </button>
+
+        <div class="logo-core">
+          <div class="logo-core__glow" aria-hidden="true"></div>
+          <div class="brand-head">
+            <h1 id="verein-name" class="brand-copy__title">Gemeinsam fürs Freibad.</h1>
+          </div>
+
           <img
-            src="logo-freibadfreunde-emsetal.png"
+            src="logo-freibadfreunde-emsetal-transparent.png"
             alt="Logo Freibadfreunde Emsetal e.V."
             class="site-logo"
           />
-          <h1 id="verein-name" class="visually-hidden">Freibadfreunde Emsetal e.V.</h1>
+
+          <div class="brand-copy">
+            <p class="brand-copy__eyebrow">Freibadfreunde Emsetal e.V.</p>
+          </div>
         </div>
-        <div id="floating-chip" class="floating-chip"></div>
+
+        <button class="orbit-card orbit-card--donation" type="button" data-modal-key="donation" aria-haspopup="dialog">
+          <span class="orbit-card__tag">Unterstützen</span>
+          <h2 class="orbit-card__title">Spenden</h2>
+          <p class="orbit-card__text">Jeder Beitrag hilft direkt bei Erhalt, Pflege und Zukunft des Freibads.</p>
+          <span class="orbit-card__cta">Details öffnen</span>
+        </button>
+
+        <button class="orbit-card orbit-card--support" type="button" data-modal-key="support" aria-haspopup="dialog">
+          <span class="orbit-card__tag">Fördern</span>
+          <h2 class="orbit-card__title">Fördervereinbarung</h2>
+          <p class="orbit-card__text">Förderzuwendung und Lastschriftmandat direkt im passenden Fenster öffnen.</p>
+          <span class="orbit-card__cta">Details öffnen</span>
+        </button>
+
+        <button class="orbit-card orbit-card--contact" type="button" data-modal-key="contact" aria-haspopup="dialog">
+          <span class="orbit-card__tag">Kontakt</span>
+          <h2 class="orbit-card__title">Schreiben Sie uns</h2>
+          <p class="orbit-card__text">Kontaktformular im eigenen Fenster öffnen und direkt mit uns in Verbindung treten.</p>
+          <span class="orbit-card__cta">Kontakt öffnen</span>
+        </button>
       </div>
-
-      <div id="hero-right" class="hero-note hero-note--right"></div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section class="news-stage section-box" aria-labelledby="aktuelles-title">
-      <div class="section-title-wrap">
-        <p class="section-kicker">Info Block</p>
-        <h2 id="aktuelles-title" class="section-title">Aktuelles &amp; Information</h2>
-      </div>
-      <div id="news-list" class="news-list" aria-live="polite"></div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section class="action-stage section-box" aria-labelledby="spenden-title">
-      <div id="doc-left" class="doc-slot"></div>
-
-      <div class="donation-center">
-        <p class="section-kicker">Unterstützen</p>
-        <h2 id="spenden-title" class="section-title section-title--center">Spenden</h2>
-        <div id="donation-lines" class="donation-lines"></div>
-        <div class="donation-actions">
-          <a id="donation-link" class="btn btn--primary" href="#">Jetzt spenden</a>
-          <button id="donation-info-btn" class="btn btn--ghost" type="button">Infos einblenden</button>
-        </div>
-        <div id="donation-info" class="donation-info is-hidden"></div>
-      </div>
-
-      <div id="doc-right" class="doc-slot"></div>
     </section>
   </main>
 
-  <footer class="footer">
-    <p><strong>Freibadfreunde Emsetal e.V.</strong></p>
-    <p class="footer__small">© <span id="current-year"></span> · mobilfreundlich, kompakt und leicht aktualisierbar</p>
-  </footer>
+  <div id="modal-overlay" class="modal-overlay is-hidden" aria-hidden="true">
+    <section class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" type="button" aria-label="Fenster schließen">×</button>
+      <div id="modal-content" class="modal-content"></div>
+    </section>
+  </div>
 
   <script src="app.js"></script>
 </body>
