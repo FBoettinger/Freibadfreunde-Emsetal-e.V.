@@ -67,21 +67,21 @@ const content = {
   },
   infos: {
     pill: "Infos",
-    title: "Freibad Winterstein",
+    title: "Freibad Emsetal",
     lead: "Öffnungszeiten, Preisliste und Ausstattung des Freibads Winterstein auf einen Blick.",
     openingHours: [
-      ["Saison", "Bitte aktuelle Saisonzeiten ergänzen"],
-      ["Täglich", "Bitte Öffnungszeiten ergänzen"],
+      ["Saison", "04.07.26-14.08.26"],
+      ["Täglich", "10:00-19:00 Uhr"],
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17)", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
-      { title: "Studenten / Rentner", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
-      { title: "Kinder und Jugendliche", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
-      { title: "Familienkarte", day: "bitte ergänzen", multi: "-", year: "bitte ergänzen" },
-      { title: "Alleinerziehende mit Kind", day: "bitte ergänzen", multi: "-", year: "bitte ergänzen" }
+      { title: "Erwachsene (ab 17)", day: "4,50€", multi: "45,-€", year: "70,-€" },
+      { title: "Studenten / Rentner", day: "3,50€", multi: "35,-€", year: "60,-€" },
+      { title: "Kinder und Jugendliche (bis einschl. 16)", day: "2,50€", multi: "25,-€", year: "45,-€" },
+      { title: "Familienkarte (2 Erwachsene + 2 Kinder", day: "10,50€", multi: "105,-€", year: "150,-€" },
+      { title: "Alleinerziehende mit Kind", day: "5,20€", multi: "52,-€", year: "75,-€" }
     ],
-    eveningNote: "Abendpreise oder Sonderpreise können hier später zusätzlich ergänzt werden.",
+    eveningNote: "ab 18:00 Uhr gilt Abendtarif: Erwachsene: 3,00€; ermäßigt: 2,00€; Kinder: 1,50€",
     amenities: [
       "Schwimmerbecken",
       "Kinderbecken",
@@ -91,12 +91,33 @@ const content = {
       "Kiosk"
     ]
   },
-  contact: {
+    contact: {
     pill: "Kontakt",
     title: "Schreiben Sie uns",
     lead: "Nutzen Sie das Formular für Fragen, Hinweise oder Unterstützung rund um den Verein und das Freibad.",
     note: "Beim Senden wird Ihr Mailprogramm mit einer vorbereiteten Nachricht geöffnet."
+  },
+
+  imprint: {
+    pill: "Rechtliches",
+    title: "Impressum",
+    lead: "Angaben zur Anbieterkennzeichnung für die Website des Freibadfreunde Emsetal e.V.",
+    club: "Freibadfreunde Emsetal e.V.",
+    street: "Lerchenbergstraße 17",
+    city: "99880 Waltershausen",
+    seat: "Waltershausen, OT Winterstein",
+    representatives: ["Robert Deutsch", "Claudia Fabig"],
+    email: "freibadfreundeemsetal@gmail.com",
+    phone: "",
+    register: "Gotha",
+    registerNumber: "VR 141702",
+    editorialResponsible: ""
   }
+};
+
+const paypalDonateConfig = {
+  env: "production",
+  hostedButtonId: "DEINE_LIVE_HOSTED_BUTTON_ID"
 };
 
 const modalOverlay = document.getElementById("modal-overlay");
@@ -152,16 +173,19 @@ function renderDonationModal(data) {
     </div>
 
     <div class="modal-grid modal-grid--two">
-      ${data.infoBlocks.map(block => `
-        <section class="modal-panel bank-card">
-          <strong>${block[0]}</strong>
-          ${block.slice(1).map(line => `<span>${line}</span>`).join("")}
-        </section>
-      `).join("")}
+      <section class="modal-panel bank-card">
+        <strong>${data.infoBlocks[0][0]}</strong>
+        ${data.infoBlocks[0].slice(1).map(line => `<span>${line}</span>`).join("")}
+      </section>
+
+      <section class="modal-panel">
+        <h3>Online spenden mit PayPal</h3>
+        <div id="paypal-donate-button-container"></div>
+        <p id="paypal-donate-status" class="paypal-status"></p>
+      </section>
     </div>
 
     <div class="action-row">
-      ${createActionButton(data.actionLabel, data.actionHref)}
       <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
     </div>
   `;
@@ -216,7 +240,7 @@ function renderInfosModal(data) {
       </section>
 
       <section class="modal-panel">
-        <h3>Preisliste Freibad Winterstein</h3>
+        <h3>Preisliste Freibad Emsetal</h3>
         <div class="news-feed">
           ${data.prices.map(price => `
             <article class="news-item">
@@ -292,23 +316,142 @@ function renderContactModal(data) {
   `;
 }
 
+function renderImprintModal(data) {
+  const phoneMarkup = data.phone
+    ? `Telefon: ${data.phone}`
+    : `Telefon: <span class="legal-missing">bitte vor Veröffentlichung ergänzen</span>`;
+
+  const editorialMarkup = data.editorialResponsible
+    ? `
+      <section class="modal-panel">
+        <h3>Inhaltlich verantwortlich</h3>
+        <p>${data.editorialResponsible}</p>
+      </section>
+    `
+    : `
+      <section class="modal-panel legal-note">
+        <h3>Vor Veröffentlichung noch prüfen</h3>
+        <ul class="modal-list">
+          <li>Bitte eine Telefonnummer oder einen gleichwertigen unmittelbaren Kontaktweg ergänzen.</li>
+          <li>Falls die Rubrik „Aktuelles“ redaktionell ausgebaut wird, eine natürliche Person als inhaltlich verantwortlich ergänzen.</li>
+        </ul>
+      </section>
+    `;
+
+  return `
+    <div class="modal-header">
+      <span class="modal-pill">${data.pill}</span>
+      <h2 id="modal-title" class="modal-title">${data.title}</h2>
+      <p class="modal-lead">${data.lead}</p>
+    </div>
+
+    <div class="modal-grid modal-grid--two">
+      <section class="modal-panel">
+        <h3>Anbieter</h3>
+        <p>
+          ${data.club}<br>
+          ${data.street}<br>
+          ${data.city}<br>
+          Vereinssitz: ${data.seat}
+        </p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Vertreten durch</h3>
+        <p>
+          Vorstand / Vorsitzende:<br>
+          ${data.representatives.join("<br>")}
+        </p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Kontakt</h3>
+        <p>
+          E-Mail:
+          <a class="text-link" href="mailto:${data.email}">${data.email}</a><br>
+          ${phoneMarkup}
+        </p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Registereintrag</h3>
+        <p>
+          Eintragung im Vereinsregister<br>
+          Register: ${data.register}<br>
+          Registernummer: ${data.registerNumber}
+        </p>
+      </section>
+
+      ${editorialMarkup}
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
+    </div>
+  `;
+}
+
 function renderModal(key) {
   if (key === "membership") return renderDocumentModal(content.membership);
   if (key === "support") return renderDocumentModal(content.support);
   if (key === "donation") return renderDonationModal(content.donation);
   if (key === "news") return renderNewsModal(content.news);
   if (key === "infos") return renderInfosModal(content.infos);
-  if (key === "contact") return renderContactModal(content.contact);
+    if (key === "contact") return renderContactModal(content.contact);
+  if (key === "imprint") return renderImprintModal(content.imprint);
   return "";
+}
+
+function setDonateStatus(message, type = "") {
+  const status = document.getElementById("paypal-donate-status");
+  if (!status) return;
+
+  status.textContent = message;
+  status.className = "paypal-status";
+  if (type) status.classList.add(`paypal-status--${type}`);
+}
+
+function renderDonateButton() {
+  const container = document.getElementById("paypal-donate-button-container");
+  if (!container) return;
+  if (container.dataset.rendered === "true") return;
+
+  if (!window.PayPal || !window.PayPal.Donation || !window.PayPal.Donation.Button) {
+    setDonateStatus("PayPal Donate konnte nicht geladen werden.", "error");
+    return;
+  }
+
+  window.PayPal.Donation.Button({
+    env: paypalDonateConfig.env,
+    hosted_button_id: paypalDonateConfig.hostedButtonId,
+    image: {
+      src: "https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif",
+      title: "PayPal - The safer, easier way to pay online!",
+      alt: "Donate with PayPal button"
+    },
+    onComplete(params) {
+      console.log("PayPal-Spende abgeschlossen:", params);
+      setDonateStatus("Vielen Dank für die Spende!", "success");
+    }
+  }).render("#paypal-donate-button-container");
+
+  container.dataset.rendered = "true";
 }
 
 function openModal(key, trigger) {
   if (!modalOverlay || !modalContent) return;
+
   lastTrigger = trigger || null;
   modalContent.innerHTML = renderModal(key);
   modalOverlay.classList.remove("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
+  if (key === "donation") {
+    requestAnimationFrame(() => {
+      renderDonateButton();
+    });
+  }
 }
 
 function closeModal() {
@@ -362,11 +505,6 @@ function wireModals() {
 
       if (target === modalOverlay || target.dataset.closeModal === "true") {
         closeModal();
-      }
-
-      if (target.dataset.placeholderLink === "true") {
-        event.preventDefault();
-        alert("Dieser Spendenlink wird noch ergänzt.");
       }
     });
 

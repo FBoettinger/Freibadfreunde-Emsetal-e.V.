@@ -257,6 +257,15 @@ img {
   color: var(--primary);
 }
 
+.brand-copy__subline {
+  margin: 0;
+  font-size: clamp(0.78rem, 1.4vw, 0.92rem);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text);
+  opacity: 0.9;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -487,6 +496,61 @@ img {
   color: var(--muted);
 }
 
+.site-legal {
+  position: fixed;
+  left: 50%;
+  bottom: max(0.8rem, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  justify-content: center;
+}
+
+.site-legal__link {
+  min-height: 42px;
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--primary-dark);
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.site-legal__link:hover,
+.site-legal__link:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+
+.text-link {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+.legal-note {
+  background: linear-gradient(180deg, rgba(255, 250, 237, 0.96), rgba(255, 247, 226, 0.92));
+  border-color: rgba(193, 149, 57, 0.22);
+}
+
+.legal-missing {
+  font-weight: 800;
+  color: #9a6700;
+}
+
 @media (min-width: 760px) {
   .home-shell {
     padding: 0.8rem 1rem;
@@ -599,4 +663,24 @@ img {
   .brand-copy__title {
     font-size: clamp(1.1rem, 2.4vw, 2rem);
   }
+}
+
+#paypal-donate-button-container {
+  margin-top: 0.35rem;
+  min-height: 44px;
+}
+
+.paypal-status {
+  margin: 0.7rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.paypal-status--success {
+  color: #137333;
+}
+
+.paypal-status--error {
+  color: #b3261e;
 }
