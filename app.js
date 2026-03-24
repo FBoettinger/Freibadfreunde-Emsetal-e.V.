@@ -2,7 +2,7 @@ const content = {
   membership: {
     pill: "Mitmachen",
     title: "Mitglied werden",
-    lead: "Mitgliedschaft beantragen und den Verein aktiv unterstützen. Alle wichtigen Punkte sind für Smartphone und Desktop kompakt gebündelt.",
+    lead: "Mitgliedschaft beantragen und den Verein aktiv unterstützen.",
     summaryTitle: "Was enthalten ist",
     summaryItems: [
       "Persönliche Angaben und Kontaktdaten",
@@ -10,14 +10,14 @@ const content = {
       "Arbeitsgruppen und SEPA-Lastschriftmandat"
     ],
     extraTitle: "Dokument öffnen",
-    extraText: "Der Mitgliedsantrag kann direkt als PDF geöffnet werden. Den Dateinamen kannst du bei Bedarf später einfach austauschen.",
+    extraText: "Der Mitgliedsantrag kann direkt als PDF geöffnet werden.",
     actionLabel: "Mitgliedsantrag öffnen",
     actionHref: "mitgliedsantrag-freibadfreunde-emsetal.pdf"
   },
   support: {
     pill: "Fördern",
     title: "Fördervereinbarung",
-    lead: "Für Unterstützerinnen und Unterstützer, die das Freibad finanziell begleiten möchten. Die Vereinbarung ist als eigener Bereich schnell erreichbar.",
+    lead: "Für Unterstützerinnen und Unterstützer, die das Freibad finanziell begleiten möchten.",
     summaryTitle: "Was enthalten ist",
     summaryItems: [
       "Angaben des Förderers",
@@ -25,16 +25,16 @@ const content = {
       "SEPA-Basislastschrift und weitere Hinweise"
     ],
     extraTitle: "Dokument öffnen",
-    extraText: "Die Fördervereinbarung öffnet sich direkt als PDF. Damit bleibt die Startseite klar und die Inhalte liegen in einem eigenen Fenster.",
+    extraText: "Die Fördervereinbarung öffnet sich direkt als PDF.",
     actionLabel: "Fördervereinbarung öffnen",
     actionHref: "foerdervereinbarung-freibadfreunde-emsetal.pdf"
   },
   donation: {
     pill: "Unterstützen",
     title: "Spenden",
-    lead: "Jede Spende hilft direkt dem Freibad. Dieser Bereich kann später mit Bankdaten, PayPal oder einer externen Spendenseite verbunden werden.",
+    lead: "Jede Spende hilft direkt dem Freibad.",
     infoBlocks: [
-      ["Freibadfreunde Emsetal e.V.", "Bankverbindung kann hier ergänzt werden.", "IBAN: folgt", "BIC: folgt"],
+      ["Freibadfreunde Emsetal e.V.", "Kreissparkasse Gotha", "IBAN: DE20 8205 2020 0300 1094 07", "BIC: HELADEF1GTH"],
       ["Hinweis", "Der Spendenbutton ist vorbereitet und kann später direkt mit einer echten Spendenmöglichkeit verknüpft werden."]
     ],
     actionLabel: "Jetzt spenden",
@@ -42,8 +42,8 @@ const content = {
   },
   news: {
     pill: "Bleiben Sie dran",
-    title: "Infos & Aktuelles",
-    lead: "Kurze Vereinsinformationen, Hinweise und aktuelle Meldungen werden hier gesammelt, ohne die Startseite zu überladen.",
+    title: "Aktuelles",
+    lead: "Kurze Vereinsinformationen, Hinweise und aktuelle Meldungen werden hier gesammelt.",
     items: [
       {
         date: "22.03.2026",
@@ -60,9 +60,35 @@ const content = {
       {
         date: "01.03.2026",
         category: "Information",
-        title: "Unterlagen mobil verfügbar",
-        text: "Wichtige Vereinsunterlagen werden schrittweise digital eingebunden und sind auf dem Smartphone schnell erreichbar."
+        title: "Benefitsveranstaltung geplant",
+        text: "Am 04.07.2026."
       }
+    ]
+  },
+  infos: {
+    pill: "Infos",
+    title: "Freibad Winterstein",
+    lead: "Öffnungszeiten, Preisliste und Ausstattung des Freibads Winterstein auf einen Blick.",
+    openingHours: [
+      ["Saison", "Bitte aktuelle Saisonzeiten ergänzen"],
+      ["Täglich", "Bitte Öffnungszeiten ergänzen"],
+      ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
+    ],
+    prices: [
+      { title: "Erwachsene (ab 17)", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
+      { title: "Studenten / Rentner", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
+      { title: "Kinder und Jugendliche", day: "bitte ergänzen", multi: "bitte ergänzen", year: "bitte ergänzen" },
+      { title: "Familienkarte", day: "bitte ergänzen", multi: "-", year: "bitte ergänzen" },
+      { title: "Alleinerziehende mit Kind", day: "bitte ergänzen", multi: "-", year: "bitte ergänzen" }
+    ],
+    eveningNote: "Abendpreise oder Sonderpreise können hier später zusätzlich ergänzt werden.",
+    amenities: [
+      "Schwimmerbecken",
+      "Kinderbecken",
+      "Liegewiesen",
+      "Babybecken",
+      "Volleyball-Spielfeld",
+      "Kiosk"
     ]
   },
   contact: {
@@ -168,6 +194,58 @@ function renderNewsModal(data) {
   `;
 }
 
+function renderInfosModal(data) {
+  return `
+    <div class="modal-header">
+      <span class="modal-pill">${data.pill}</span>
+      <h2 id="modal-title" class="modal-title">${data.title}</h2>
+      <p class="modal-lead">${data.lead}</p>
+    </div>
+
+    <div class="modal-grid">
+      <section class="modal-panel">
+        <h3>Öffnungszeiten</h3>
+        <div class="news-feed">
+          ${data.openingHours.map(item => `
+            <article class="news-item">
+              <h4 class="news-item__title">${item[0]}</h4>
+              <p class="news-item__text">${item[1]}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Preisliste Freibad Winterstein</h3>
+        <div class="news-feed">
+          ${data.prices.map(price => `
+            <article class="news-item">
+              <h4 class="news-item__title">${price.title}</h4>
+              <p class="news-item__text">
+                Tageskarte: ${price.day}<br>
+                Zwölferkarte: ${price.multi}<br>
+                Jahreskarte: ${price.year}
+              </p>
+            </article>
+          `).join("")}
+        </div>
+        <p style="margin-top: 0.75rem;">${data.eveningNote}</p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Ausstattung</h3>
+        <ul class="modal-list">
+          ${data.amenities.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </section>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
+    </div>
+  `;
+}
+
 function renderContactModal(data) {
   return `
     <div class="modal-header">
@@ -218,8 +296,10 @@ function renderModal(key) {
   if (key === "membership") return renderDocumentModal(content.membership);
   if (key === "support") return renderDocumentModal(content.support);
   if (key === "donation") return renderDonationModal(content.donation);
+  if (key === "news") return renderNewsModal(content.news);
+  if (key === "infos") return renderInfosModal(content.infos);
   if (key === "contact") return renderContactModal(content.contact);
-  return renderNewsModal(content.news);
+  return "";
 }
 
 function openModal(key, trigger) {
