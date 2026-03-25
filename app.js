@@ -75,10 +75,10 @@ const content = {
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17)", day: "4,50€", multi: "45,-€", year: "70,-€" },
+      { title: "Erwachsene (ab 17 Jahre)", day: "4,50€", multi: "45,-€", year: "70,-€" },
       { title: "Studenten / Rentner", day: "3,50€", multi: "35,-€", year: "60,-€" },
-      { title: "Kinder und Jugendliche (bis einschl. 16)", day: "2,50€", multi: "25,-€", year: "45,-€" },
-      { title: "Familienkarte (2 Erwachsene + 2 Kinder", day: "10,50€", multi: "105,-€", year: "150,-€" },
+      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,50€", multi: "25,-€", year: "45,-€" },
+      { title: "Familienkarte (2 Erwachsene + 2 Kinder)", day: "10,50€", multi: "105,-€", year: "150,-€" },
       { title: "Alleinerziehende mit Kind", day: "5,20€", multi: "52,-€", year: "75,-€" }
     ],
     eveningNote: "ab 18:00 Uhr gilt Abendtarif: Erwachsene: 3,00€; ermäßigt: 2,00€; Kinder: 1,50€",
@@ -98,7 +98,7 @@ const content = {
     note: "Beim Senden wird Ihr Mailprogramm mit einer vorbereiteten Nachricht geöffnet."
   },
 
-  imprint: {
+    imprint: {
     pill: "Rechtliches",
     title: "Impressum",
     lead: "Angaben zur Anbieterkennzeichnung für die Website des Freibadfreunde Emsetal e.V.",
@@ -112,6 +112,27 @@ const content = {
     register: "Gotha",
     registerNumber: "VR 141702",
     editorialResponsible: ""
+  },
+
+  privacy: {
+    pill: "Rechtliches",
+    title: "Datenschutz",
+    lead: "Informationen zur Verarbeitung personenbezogener Daten auf der Website des Freibadfreunde Emsetal e.V.",
+    controllerName: "Freibadfreunde Emsetal e.V.",
+    controllerStreet: "Lerchenbergstraße 17",
+    controllerCity: "99880 Waltershausen",
+    controllerEmail: "freibadfreundeemsetal@gmail.com",
+    controllerPhone: "+49 176 22513552",
+    hostingProvider: "GitHub Pages (GitHub, Inc.)",
+    contactNote: "Wenn Sie das Kontaktformular nutzen, werden die eingegebenen Angaben nicht auf einem Website-Server gespeichert, sondern an Ihr Mailprogramm übergeben.",
+    rights: [
+      "Auskunft über Ihre gespeicherten personenbezogenen Daten",
+      "Berichtigung unrichtiger Daten",
+      "Löschung Ihrer Daten, soweit keine gesetzlichen Pflichten entgegenstehen",
+      "Einschränkung der Verarbeitung",
+      "Widerspruch gegen die Verarbeitung",
+      "Beschwerde bei einer Datenschutz-Aufsichtsbehörde"
+    ]
   }
 };
 
@@ -319,7 +340,7 @@ function renderContactModal(data) {
 function renderImprintModal(data) {
   const phoneMarkup = data.phone
     ? `Telefon: ${data.phone}`
-    : `Telefon: <span class="legal-missing">bitte vor Veröffentlichung ergänzen</span>`;
+    : `Telefon: <span class="legal-missing">+49 176 22513552</span>`;
 
   const editorialMarkup = data.editorialResponsible
     ? `
@@ -329,13 +350,7 @@ function renderImprintModal(data) {
       </section>
     `
     : `
-      <section class="modal-panel legal-note">
-        <h3>Vor Veröffentlichung noch prüfen</h3>
-        <ul class="modal-list">
-          <li>Bitte eine Telefonnummer oder einen gleichwertigen unmittelbaren Kontaktweg ergänzen.</li>
-          <li>Falls die Rubrik „Aktuelles“ redaktionell ausgebaut wird, eine natürliche Person als inhaltlich verantwortlich ergänzen.</li>
-        </ul>
-      </section>
+
     `;
 
   return `
@@ -391,14 +406,60 @@ function renderImprintModal(data) {
   `;
 }
 
+function renderPrivacyModal(data) {
+  return `
+    <div class="modal-header">
+      <span class="modal-pill">${data.pill}</span>
+      <h2 id="modal-title" class="modal-title">${data.title}</h2>
+      <p class="modal-lead">${data.lead}</p>
+    </div>
+
+    <div class="modal-grid modal-grid--two">
+      <section class="modal-panel">
+        <h3>Verantwortlicher</h3>
+        <p>
+          ${data.controllerName}<br>
+          ${data.controllerStreet}<br>
+          ${data.controllerCity}<br>
+          E-Mail:
+          <a class="text-link" href="mailto:${data.controllerEmail}">${data.controllerEmail}</a><br>
+          Telefon: ${data.controllerPhone}
+        </p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Hosting</h3>
+        <p>${data.hostingProvider}</p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Kontaktformular</h3>
+        <p>${data.contactNote}</p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>Ihre Rechte</h3>
+        <ul class="modal-list">
+          ${data.rights.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </section>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
+    </div>
+  `;
+}
+
 function renderModal(key) {
   if (key === "membership") return renderDocumentModal(content.membership);
   if (key === "support") return renderDocumentModal(content.support);
   if (key === "donation") return renderDonationModal(content.donation);
   if (key === "news") return renderNewsModal(content.news);
   if (key === "infos") return renderInfosModal(content.infos);
-    if (key === "contact") return renderContactModal(content.contact);
+  if (key === "contact") return renderContactModal(content.contact);
   if (key === "imprint") return renderImprintModal(content.imprint);
+  if (key === "privacy") return renderPrivacyModal(content.privacy);
   return "";
 }
 
