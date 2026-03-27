@@ -138,7 +138,7 @@ const content = {
 
 const paypalDonateConfig = {
   env: "production",
-  hostedButtonId: "DEINE_LIVE_HOSTED_BUTTON_ID"
+  hostedButtonId: "RX8KZ9DMTHAKA"
 };
 
 const modalOverlay = document.getElementById("modal-overlay");
