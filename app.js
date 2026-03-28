@@ -520,7 +520,7 @@ function closeModal() {
   modalOverlay.classList.add("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "true");
   modalContent.innerHTML = "";
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "";
   if (lastTrigger) lastTrigger.focus();
 }
 
