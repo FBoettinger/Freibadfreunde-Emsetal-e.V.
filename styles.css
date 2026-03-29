@@ -17,7 +17,7 @@
   --radius-card: 30px;
   --radius-panel: 42px;
   --max-width: 1380px;
-  --safe-bottom: max(0.9rem, env(safe-area-inset-bottom));
+  --safe-bottom: 0.9rem;
 }
 
 * {
@@ -29,6 +29,7 @@ body {
   margin: 0;
   min-height: 100%;
   overflow-x: hidden;
+  touch-action: pan-y;
 }
 
 html {
@@ -38,7 +39,6 @@ html {
 }
 
 body {
-  min-height: 100vh;
   min-height: 100dvh;
   font-family: "Inter", Bahnschrift, "Segoe UI", Arial, sans-serif;
   color: var(--text);
@@ -100,16 +100,14 @@ img {
 }
 
 .home-shell {
-  min-height: 100vh;
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2vw, 1.6rem) calc(5rem + env(safe-area-inset-bottom));
+  padding: clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2vw, 1.6rem) 5rem;
 }
 
 .orbit-stage {
   width: min(100%, var(--max-width));
-  min-height: min(calc(100vh - 2rem), 980px);
   min-height: min(calc(100dvh - 2rem), 980px);
   display: grid;
   align-items: center;
@@ -357,7 +355,6 @@ img {
 
 .modal-window {
   width: min(100%, 840px);
-  max-height: min(88vh, 840px);
   max-height: min(88dvh, 840px);
   overflow: auto;
   position: relative;
@@ -648,7 +645,7 @@ img {
 
 @media (max-width: 1050px) {
   .home-shell {
-    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
+    padding-bottom: 5.25rem;
   }
 
   .orbit-stage {
@@ -693,7 +690,7 @@ img {
 
   .home-shell {
     place-items: start center;
-    padding: max(0.8rem, env(safe-area-inset-top)) 0.85rem calc(5.45rem + env(safe-area-inset-bottom));
+    padding: max(0.8rem, env(safe-area-inset-top)) 0.85rem 5.45rem;
   }
 
   .orbit-stage {
@@ -771,7 +768,7 @@ img {
   .site-legal {
     left: 0;
     right: 0;
-    bottom: var(--safe-bottom);
+    bottom: 0.9rem;
     transform: none;
     width: auto;
     padding: 0 0.85rem;
@@ -798,7 +795,7 @@ img {
   .home-shell {
     padding-left: 0.7rem;
     padding-right: 0.7rem;
-    padding-bottom: calc(5.15rem + env(safe-area-inset-bottom));
+    padding-bottom: 5.15rem;
   }
 
   .orbit-grid {
@@ -855,7 +852,7 @@ img {
 
 @media (max-width: 759px) and (max-height: 760px) {
   .home-shell {
-    padding-bottom: calc(4.95rem + env(safe-area-inset-bottom));
+    padding-bottom: 4.95rem;
   }
 
   .logo-core {
