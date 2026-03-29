@@ -506,7 +506,7 @@ function openModal(key, trigger) {
   modalContent.innerHTML = renderModal(key);
   modalOverlay.classList.remove("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "";
 
   if (key === "donation") {
     requestAnimationFrame(() => {
