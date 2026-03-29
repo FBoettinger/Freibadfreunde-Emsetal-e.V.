@@ -520,7 +520,7 @@ function closeModal() {
   modalOverlay.setAttribute("aria-hidden", "true");
   modalContent.innerHTML = "";
   document.body.style.overflow = "";
-  if (lastTrigger) lastTrigger.focus();
+  if (lastTrigger) lastTrigger.focus({ preventScroll: true });
 }
 
 function submitContactForm(form) {
