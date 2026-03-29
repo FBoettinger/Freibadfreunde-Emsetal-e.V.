@@ -60,7 +60,7 @@ const content = {
       {
         date: "01.03.2026",
         category: "Information",
-        title: "Benefitsveranstaltung geplant",
+        title: "Benefizveranstaltung geplant",
         text: "Am 04.07.2026."
       }
     ]
@@ -75,13 +75,13 @@ const content = {
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17 Jahre)", day: "4,50€", multi: "45,-€", year: "70,-€" },
-      { title: "Studenten / Rentner", day: "3,50€", multi: "35,-€", year: "60,-€" },
-      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,50€", multi: "25,-€", year: "45,-€" },
-      { title: "Familienkarte (2 Erwachsene + 2 Kinder)", day: "10,50€", multi: "105,-€", year: "150,-€" },
-      { title: "Alleinerziehende mit Kind", day: "5,20€", multi: "52,-€", year: "75,-€" }
+      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€", multi: "40,-€", year: "70,-€" },
+      { title: "Studenten / Rentner", day: "3,00€", multi: "30,-€", year: "60,-€" },
+      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€", multi: "20,-€", year: "45,-€" },
+      { title: "Familienkarte (2 Erwachsene + 2 Kinder)", day: "10,00€", multi: "100,-€", year: "150,-€" },
+      { title: "Alleinerziehende mit Kind", day: "4,70€", multi: "47,-€", year: "75,-€" }
     ],
-    eveningNote: "ab 18:00 Uhr gilt Abendtarif: Erwachsene: 3,00€; ermäßigt: 2,00€; Kinder: 1,50€",
+    eveningNote: "ab 18:00 Uhr gilt Abendtarif: Erwachsene: 2,50€; ermäßigt: 1,50€; Kinder: 1,00€",
     amenities: [
       "Schwimmerbecken",
       "Kinderbecken",
@@ -122,7 +122,6 @@ const content = {
     controllerStreet: "Lerchenbergstraße 17",
     controllerCity: "99880 Waltershausen",
     controllerEmail: "freibadfreundeemsetal@gmail.com",
-    controllerPhone: "+49 176 22513552",
     hostingProvider: "GitHub Pages (GitHub, Inc.)",
     contactNote: "Wenn Sie das Kontaktformular nutzen, werden die eingegebenen Angaben nicht auf einem Website-Server gespeichert, sondern an Ihr Mailprogramm übergeben.",
     rights: [
@@ -340,7 +339,7 @@ function renderContactModal(data) {
 function renderImprintModal(data) {
   const phoneMarkup = data.phone
     ? `Telefon: ${data.phone}`
-    : `Telefon: <span class="legal-missing">+49 176 22513552</span>`;
+    : `Telefon: <span class="legal-missing"></span>`;
 
   const editorialMarkup = data.editorialResponsible
     ? `
