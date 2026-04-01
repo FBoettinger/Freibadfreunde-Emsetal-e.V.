@@ -338,8 +338,8 @@ function renderContactModal(data) {
 
 function renderImprintModal(data) {
   const phoneMarkup = data.phone
-    ? `Telefon: ${data.phone}`
-    : `Telefon: <span class="legal-missing"></span>`;
+  ? `Telefon: ${data.phone}`
+  : ``;
 
   const editorialMarkup = data.editorialResponsible
     ? `
@@ -382,8 +382,8 @@ function renderImprintModal(data) {
         <h3>Kontakt</h3>
         <p>
           E-Mail:
-          <a class="text-link" href="mailto:${data.email}">${data.email}</a><br>
-          ${phoneMarkup}
+          <a class="text-link" href="mailto:${data.email}">${data.email}</a>
+          ${phoneMarkup ? `<br>${phoneMarkup}` : ""}
         </p>
       </section>
 
@@ -422,7 +422,6 @@ function renderPrivacyModal(data) {
           ${data.controllerCity}<br>
           E-Mail:
           <a class="text-link" href="mailto:${data.controllerEmail}">${data.controllerEmail}</a><br>
-          Telefon: ${data.controllerPhone}
         </p>
       </section>
 
@@ -505,7 +504,7 @@ function openModal(key, trigger) {
   modalContent.innerHTML = renderModal(key);
   modalOverlay.classList.remove("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "";
+  document.body.style.overflow = "hidden";
 
   if (key === "donation") {
     requestAnimationFrame(() => {
@@ -520,7 +519,9 @@ function closeModal() {
   modalOverlay.setAttribute("aria-hidden", "true");
   modalContent.innerHTML = "";
   document.body.style.overflow = "";
-  if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+  if (lastTrigger && !window.matchMedia("(pointer: coarse)").matches) {
+  lastTrigger.focus({ preventScroll: true });
+}
 }
 
 function submitContactForm(form) {
