@@ -903,3 +903,15 @@ img {
     letter-spacing: -0.01em;
   }
 }
+
+@media (hover: none), (pointer: coarse) {
+  .orbit-card:hover,
+  .orbit-card:focus-visible,
+  .orbit-card:active,
+  .site-legal__link:hover,
+  .site-legal__link:focus-visible,
+  .btn:hover,
+  .btn:focus-visible {
+    transform: none;
+  }
+}
