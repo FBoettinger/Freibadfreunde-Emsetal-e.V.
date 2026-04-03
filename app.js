@@ -1,49 +1,56 @@
 const content = {
   membership: {
     pill: "Mitmachen",
-    title: "Mitglied werden",
-    lead: "Mitgliedschaft beantragen und den Verein aktiv unterstützen.",
-    summaryTitle: "Was enthalten ist",
+    title: "Mitglied / Förderer werden",
+    lead: "Mitgliedsantrag und Fördervereinbarung gemeinsam an einem Ort öffnen.",
+    summaryTitle: "Was Sie hier finden",
     summaryItems: [
-      "Persönliche Angaben und Kontaktdaten",
-      "Datenschutzerklärung und Kommunikationswünsche",
-      "Arbeitsgruppen und SEPA-Lastschriftmandat"
+      "Mitgliedsantrag für eine aktive Vereinsmitgliedschaft",
+      "Fördervereinbarung für finanzielle Unterstützung des Freibads",
+      "Direkte PDF-Öffnung beider Dokumente in einem gemeinsamen Bereich"
     ],
-    extraTitle: "Dokument öffnen",
-    extraText: "Der Mitgliedsantrag kann direkt als PDF geöffnet werden.",
-    actionLabel: "Mitgliedsantrag öffnen",
-    actionHref: "mitgliedsantrag-freibadfreunde-emsetal.pdf"
+    extraTitle: "Dokumente direkt öffnen",
+    extraText: "Beide PDF-Dokumente stehen direkt zur Verfügung und können separat geöffnet werden.",
+    actionButtons: [
+      {
+        label: "Mitgliedsantrag öffnen",
+        href: "mitgliedsantrag-freibadfreunde-emsetal.pdf"
+      },
+      {
+        label: "Fördervereinbarung öffnen",
+        href: "foerdervereinbarung-freibadfreunde-emsetal.pdf"
+      }
+    ]
   },
-  support: {
-    pill: "Fördern",
-    title: "Fördervereinbarung",
-    lead: "Für Unterstützerinnen und Unterstützer, die das Freibad finanziell begleiten möchten.",
-    summaryTitle: "Was enthalten ist",
-    summaryItems: [
-      "Angaben des Förderers",
-      "Förderzuwendung und Datenschutzerklärung",
-      "SEPA-Basislastschrift und weitere Hinweise"
-    ],
-    extraTitle: "Dokument öffnen",
-    extraText: "Die Fördervereinbarung öffnet sich direkt als PDF.",
-    actionLabel: "Fördervereinbarung öffnen",
-    actionHref: "foerdervereinbarung-freibadfreunde-emsetal.pdf"
-  },
+
   donation: {
     pill: "Unterstützen",
     title: "Spenden",
     lead: "Jede Spende hilft direkt dem Freibad.",
     infoBlocks: [
-      ["Freibadfreunde Emsetal e.V.", "Kreissparkasse Gotha", "IBAN: DE20 8205 2020 0300 1094 07", "BIC: HELADEF1GTH"],
-      ["Hinweis", "Der Spendenbutton ist vorbereitet und kann später direkt mit einer echten Spendenmöglichkeit verknüpft werden."]
+      [
+        "Freibadfreunde Emsetal e.V.",
+        "Kreissparkasse Gotha",
+        "IBAN: DE20 8205 2020 0300 1094 07",
+        "BIC: HELADEF1GTH"
+      ],
+      [
+        "Hinweis",
+        "Der Spendenbutton ist vorbereitet und kann später direkt mit einer echten Spendenmöglichkeit verknüpft werden."
+      ]
     ],
     actionLabel: "Jetzt spenden",
     actionHref: "#"
   },
+
   news: {
     pill: "Bleiben Sie dran",
     title: "Aktuelles",
     lead: "Kurze Vereinsinformationen, Hinweise und aktuelle Meldungen werden hier gesammelt.",
+    heroImage: {
+      src: "bademeisterhaus-spendenaufruf.jpg",
+      alt: "Spendenaufruf für ein neues Bademeister-Haus im Schwimmbad Winterstein"
+    },
     items: [
       {
         date: "22.03.2026",
@@ -59,12 +66,13 @@ const content = {
       },
       {
         date: "01.03.2026",
-        category: "Information",
-        title: "Benefizveranstaltung geplant",
-        text: "Am 04.07.2026."
+        category: "Spendenprojekt",
+        title: "Spendenaufruf für ein neues Bademeister-Haus",
+        text: "Mit dem aktuellen Spendenaufruf sammeln wir Unterstützung für ein neues Bademeister-Haus im Freibad Winterstein."
       }
     ]
   },
+
   infos: {
     pill: "Infos",
     title: "Freibad Emsetal",
@@ -75,13 +83,11 @@ const content = {
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€", multi: "40,-€", year: "70,-€" },
-      { title: "Studenten / Rentner", day: "3,00€", multi: "30,-€", year: "60,-€" },
-      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€", multi: "20,-€", year: "45,-€" },
-      { title: "Familienkarte (2 Erwachsene + 2 Kinder)", day: "10,00€", multi: "100,-€", year: "150,-€" },
-      { title: "Alleinerziehende mit Kind", day: "4,70€", multi: "47,-€", year: "75,-€" }
+      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€", },
+      { title: "Studenten / Rentner", day: "2,00€", },
+      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€", }
     ],
-    eveningNote: "ab 18:00 Uhr gilt Abendtarif: Erwachsene: 2,50€; ermäßigt: 1,50€; Kinder: 1,00€",
+    eveningNote: "",
     amenities: [
       "Schwimmerbecken",
       "Kinderbecken",
@@ -91,14 +97,52 @@ const content = {
       "Kiosk"
     ]
   },
-    contact: {
+
+  contact: {
     pill: "Kontakt",
     title: "Schreiben Sie uns",
     lead: "Nutzen Sie das Formular für Fragen, Hinweise oder Unterstützung rund um den Verein und das Freibad.",
     note: "Beim Senden wird Ihr Mailprogramm mit einer vorbereiteten Nachricht geöffnet."
   },
 
-    imprint: {
+  gallery: {
+  pill: "Verein",
+  title: "Galerie - Wer wir sind",
+  lead: "Einblicke in den Verein, unsere Arbeit und die Geschichte des Freibads.",
+  introTitle: "Wer wir sind",
+  introText:
+    "Hinter den Freibadfreunden Emsetal e.V. stehen engagierte Menschen, die sich gemeinsam für den Erhalt und die Zukunft des Freibads einsetzen.",
+  teamPhoto: {
+    title: "Unser Verein",
+    text: "Das Gruppenfoto zeigt einen Teil der Freibadfreunde Emsetal bei einer gemeinsamen Aktion vor dem Vereinsbanner.",
+    src: "freibadfreunde-team.jpg",
+    alt: "Gruppenfoto der Freibadfreunde Emsetal vor dem Eingang mit Vereinsbanner",
+    actionLabel: "Foto öffnen",
+    actionHref: "freibadfreunde-team.jpg"
+  },
+  winterspielePhoto: {
+    title: "Förderung bei den Winterspielen",
+    text: "Dieses Bild zeigt die Freibadfreunde Emsetal bei der Übergabe einer Förderung der Winterspiele in Höhe von 2.000 Euro.",
+    src: "winterspiele-spende.jpg",
+    alt: "Freibadfreunde Emsetal bei einer Förderübergabe der Winterspiele über 2.000 Euro",
+    actionLabel: "Bild öffnen",
+    actionHref: "winterspiele-spende.jpg"
+  },
+  timeline: {
+    title: "Zeitstrahl Schwimmbad",
+    text: "Hier finden Sie den historischen Zeitstrahl mit Bildern und Stationen zur Entwicklung des Schwimmbads.",
+    actionLabel: "Zeitstrahl als PDF öffnen",
+    actionHref: "zeitstrahl-schwimmbad.pdf"
+  },
+  infoSheet: {
+    title: "Vereinsinfos & Ziele",
+    text: "Dieses Dokument enthält aktuelle Informationen zur Vereinsgründung, Neuigkeiten sowie die Ziele und Planungen für 2025 und 2026.",
+    actionLabel: "Infodokument öffnen",
+    actionHref: "freibadfreunde-info.pdf"
+  }
+},
+
+  imprint: {
     pill: "Rechtliches",
     title: "Impressum",
     lead: "Angaben zur Anbieterkennzeichnung für die Website des Freibadfreunde Emsetal e.V.",
@@ -123,7 +167,8 @@ const content = {
     controllerCity: "99880 Waltershausen",
     controllerEmail: "freibadfreundeemsetal@gmail.com",
     hostingProvider: "GitHub Pages (GitHub, Inc.)",
-    contactNote: "Wenn Sie das Kontaktformular nutzen, werden die eingegebenen Angaben nicht auf einem Website-Server gespeichert, sondern an Ihr Mailprogramm übergeben.",
+    contactNote:
+      "Wenn Sie das Kontaktformular nutzen, werden die eingegebenen Angaben nicht auf einem Website-Server gespeichert, sondern an Ihr Mailprogramm übergeben.",
     rights: [
       "Auskunft über Ihre gespeicherten personenbezogenen Daten",
       "Berichtigung unrichtiger Daten",
@@ -156,6 +201,13 @@ function createActionButton(label, href) {
 }
 
 function renderDocumentModal(data) {
+  const actionButtons =
+    Array.isArray(data.actionButtons) && data.actionButtons.length
+      ? data.actionButtons
+          .map(button => createActionButton(button.label, button.href))
+          .join("")
+      : createActionButton(data.actionLabel, data.actionHref);
+
   return `
     <div class="modal-header">
       <span class="modal-pill">${data.pill}</span>
@@ -178,7 +230,7 @@ function renderDocumentModal(data) {
     </div>
 
     <div class="action-row">
-      ${createActionButton(data.actionLabel, data.actionHref)}
+      ${actionButtons}
       <button class="btn btn--ghost" type="button" data-close-modal="true">Zurück zur Startseite</button>
     </div>
   `;
@@ -219,8 +271,24 @@ function renderNewsModal(data) {
       <p class="modal-lead">${data.lead}</p>
     </div>
 
+    ${
+      data.heroImage
+        ? `
+      <section class="modal-panel">
+        <img
+          src="${data.heroImage.src}"
+          alt="${data.heroImage.alt}"
+          style="width: 100%; display: block; border-radius: 20px; margin-bottom: 0.25rem; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
+        >
+      </section>
+    `
+        : ""
+    }
+
     <div class="news-feed">
-      ${data.items.map(item => `
+      ${data.items
+        .map(
+          item => `
         <article class="news-item">
           <div class="news-item__meta">
             <span>${item.date}</span>
@@ -229,7 +297,9 @@ function renderNewsModal(data) {
           <h3 class="news-item__title">${item.title}</h3>
           <p class="news-item__text">${item.text}</p>
         </article>
-      `).join("")}
+      `
+        )
+        .join("")}
     </div>
 
     <div class="action-row">
@@ -250,28 +320,34 @@ function renderInfosModal(data) {
       <section class="modal-panel">
         <h3>Öffnungszeiten</h3>
         <div class="news-feed">
-          ${data.openingHours.map(item => `
+          ${data.openingHours
+            .map(
+              item => `
             <article class="news-item">
               <h4 class="news-item__title">${item[0]}</h4>
               <p class="news-item__text">${item[1]}</p>
             </article>
-          `).join("")}
+          `
+            )
+            .join("")}
         </div>
       </section>
 
       <section class="modal-panel">
         <h3>Preisliste Freibad Emsetal</h3>
         <div class="news-feed">
-          ${data.prices.map(price => `
+          ${data.prices
+            .map(
+              price => `
             <article class="news-item">
               <h4 class="news-item__title">${price.title}</h4>
               <p class="news-item__text">
-                Tageskarte: ${price.day}<br>
-                Zwölferkarte: ${price.multi}<br>
-                Jahreskarte: ${price.year}
+                Eintritt: ${price.day}<br>
               </p>
             </article>
-          `).join("")}
+          `
+            )
+            .join("")}
         </div>
         <p style="margin-top: 0.75rem;">${data.eveningNote}</p>
       </section>
@@ -336,10 +412,73 @@ function renderContactModal(data) {
   `;
 }
 
+function renderGalleryModal(data) {
+  return `
+    <div class="modal-header">
+      <span class="modal-pill">${data.pill}</span>
+      <h2 id="modal-title" class="modal-title">${data.title}</h2>
+      <p class="modal-lead">${data.lead}</p>
+    </div>
+
+    <div class="modal-grid modal-grid--two">
+      <section class="modal-panel">
+        <h3>${data.introTitle}</h3>
+        <p>${data.introText}</p>
+      </section>
+
+      <section class="modal-panel">
+        <h3>${data.timeline.title}</h3>
+        <p>${data.timeline.text}</p>
+        <div class="action-row" style="margin-top: 1rem;">
+          ${createActionButton(data.timeline.actionLabel, data.timeline.actionHref)}
+        </div>
+      </section>
+    </div>
+
+    <div class="modal-grid modal-grid--two">
+      <section class="modal-panel">
+        <h3>${data.infoSheet.title}</h3>
+        <p>${data.infoSheet.text}</p>
+        <div class="action-row" style="margin-top: 1rem;">
+          ${createActionButton(data.infoSheet.actionLabel, data.infoSheet.actionHref)}
+        </div>
+      </section>
+
+      <section class="modal-panel">
+        <h3>${data.teamPhoto.title}</h3>
+        <img
+          src="${data.teamPhoto.src}"
+          alt="${data.teamPhoto.alt}"
+          style="width: 100%; display: block; border-radius: 20px; margin: 0.9rem 0 1rem; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
+        >
+        <p>${data.teamPhoto.text}</p>
+        <div class="action-row" style="margin-top: 1rem;">
+          ${createActionButton(data.teamPhoto.actionLabel, data.teamPhoto.actionHref)}
+        </div>
+      </section>
+    </div>
+
+    <section class="modal-panel">
+      <h3>${data.winterspielePhoto.title}</h3>
+      <img
+        src="${data.winterspielePhoto.src}"
+        alt="${data.winterspielePhoto.alt}"
+        style="width: 100%; display: block; border-radius: 20px; margin: 0.9rem 0 1rem; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
+      >
+      <p>${data.winterspielePhoto.text}</p>
+      <div class="action-row" style="margin-top: 1rem;">
+        ${createActionButton(data.winterspielePhoto.actionLabel, data.winterspielePhoto.actionHref)}
+      </div>
+    </section>
+
+    <div class="action-row">
+      <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
+    </div>
+  `;
+}
+
 function renderImprintModal(data) {
-  const phoneMarkup = data.phone
-  ? `Telefon: ${data.phone}`
-  : ``;
+  const phoneMarkup = data.phone ? `Telefon: ${data.phone}` : ``;
 
   const editorialMarkup = data.editorialResponsible
     ? `
@@ -348,9 +487,7 @@ function renderImprintModal(data) {
         <p>${data.editorialResponsible}</p>
       </section>
     `
-    : `
-
-    `;
+    : ``;
 
   return `
     <div class="modal-header">
@@ -451,11 +588,11 @@ function renderPrivacyModal(data) {
 
 function renderModal(key) {
   if (key === "membership") return renderDocumentModal(content.membership);
-  if (key === "support") return renderDocumentModal(content.support);
   if (key === "donation") return renderDonationModal(content.donation);
   if (key === "news") return renderNewsModal(content.news);
   if (key === "infos") return renderInfosModal(content.infos);
   if (key === "contact") return renderContactModal(content.contact);
+  if (key === "gallery") return renderGalleryModal(content.gallery);
   if (key === "imprint") return renderImprintModal(content.imprint);
   if (key === "privacy") return renderPrivacyModal(content.privacy);
   return "";
@@ -515,13 +652,17 @@ function openModal(key, trigger) {
 
 function closeModal() {
   if (!modalOverlay || !modalContent) return;
+
+  if (lastTrigger && !window.matchMedia("(pointer: coarse)").matches) {
+    lastTrigger.focus({ preventScroll: true });
+  } else if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
+
   modalOverlay.classList.add("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "true");
   modalContent.innerHTML = "";
   document.body.style.overflow = "";
-  if (lastTrigger && !window.matchMedia("(pointer: coarse)").matches) {
-  lastTrigger.focus({ preventScroll: true });
-}
 }
 
 function submitContactForm(form) {
@@ -541,7 +682,9 @@ function submitContactForm(form) {
     message
   ];
 
-  const mailto = `mailto:FreibadFreundeEmsetal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+  const mailto = `mailto:FreibadFreundeEmsetal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    bodyLines.join("\n")
+  )}`;
 
   window.location.href = mailto;
 

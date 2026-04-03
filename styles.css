@@ -124,9 +124,9 @@ img {
   justify-items: stretch;
   grid-template-columns: minmax(280px, 1fr) minmax(360px, 430px) minmax(280px, 1fr);
   grid-template-areas:
-    "infos logo news"
-    "membership logo support"
-    "donation logo contact";
+    "infos logo membership"
+    "news logo donation"
+    "contact logo gallery";
   gap: clamp(1rem, 1.8vw, 1.45rem) clamp(1.35rem, 2.7vw, 2.4rem);
 }
 
@@ -259,9 +259,9 @@ img {
 .orbit-card--infos { grid-area: infos; --card-accent: rgba(28, 135, 173, 0.95); }
 .orbit-card--news { grid-area: news; --card-accent: rgba(56, 165, 153, 0.95); }
 .orbit-card--membership { grid-area: membership; --card-accent: rgba(32, 157, 98, 0.95); }
-.orbit-card--support { grid-area: support; --card-accent: rgba(231, 184, 95, 0.95); }
 .orbit-card--donation { grid-area: donation; --card-accent: rgba(22, 118, 210, 0.95); }
 .orbit-card--contact { grid-area: contact; --card-accent: rgba(154, 102, 222, 0.95); }
+.orbit-card--gallery { grid-area: gallery; --card-accent: rgba(218, 130, 76, 0.95); }
 
 .logo-core {
   grid-area: logo;
@@ -385,7 +385,7 @@ img {
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
-  padding: 0;
+  padding: 0 0 3px;
   border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.42);
@@ -456,6 +456,8 @@ img {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .modal-list,
@@ -568,6 +570,9 @@ img {
   color: var(--primary);
   font-weight: 800;
   text-decoration: none;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .text-link:hover,
@@ -624,6 +629,33 @@ img {
   color: #b3261e;
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.82rem;
+  margin-top: 0.9rem;
+}
+
+.gallery-tile {
+  padding: 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(247, 251, 255, 0.24));
+  box-shadow: 0 14px 28px rgba(12, 61, 84, 0.08);
+}
+
+.gallery-tile h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.98rem;
+}
+
+.gallery-tile p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 @media (min-width: 760px) {
   .contact-form-modal__row,
   .modal-grid--two {
@@ -660,9 +692,9 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "logo logo"
-      "infos news"
-      "membership support"
-      "donation contact";
+      "infos membership"
+      "news donation"
+      "contact gallery";
     gap: 0.95rem;
   }
 
@@ -704,6 +736,11 @@ img {
 
   .orbit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "logo logo"
+      "infos membership"
+      "news donation"
+      "contact gallery";
     gap: 0.76rem;
   }
 
@@ -901,6 +938,12 @@ img {
     word-break: normal;
     font-size: clamp(0.8rem, 3.15vw, 0.92rem);
     letter-spacing: -0.01em;
+  }
+}
+
+@media (max-width: 759px) {
+  .text-link {
+    font-size: 0.92rem;
   }
 }
 
