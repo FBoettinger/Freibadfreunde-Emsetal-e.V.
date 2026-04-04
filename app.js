@@ -46,10 +46,18 @@ const content = {
   news: {
     pill: "Bleiben Sie dran",
     title: "Aktuelles",
-    lead: "Kurze Vereinsinformationen, Hinweise und aktuelle Meldungen werden hier gesammelt.",
+    lead: "Vereinsinformationen und aktuelle Meldungen:",
     heroImage: {
       src: "bademeisterhaus-spendenaufruf.jpg",
       alt: "Spendenaufruf für ein neues Bademeister-Haus im Schwimmbad Winterstein"
+    },
+    heroHighlight: {
+      date: "01.04.2026",
+      category: "Spendenprojekt",
+      title: "Spendenaufruf für ein neues Bademeister-Haus",
+      text: "Mit dem aktuellen Spendenaufruf sammeln wir Unterstützung für ein neues Bademeister-Haus im Freibad Winterstein.",
+      actionLabel: "Jetzt mit PayPal spenden",
+      actionHref: "https://www.paypal.com/donate/?hosted_button_id=RX8KZ9DMTHAKA"
     },
     items: [
       {
@@ -63,12 +71,6 @@ const content = {
         category: "Verein",
         title: "Helferinnen und Helfer gesucht",
         text: "Für Pflege, Organisation und kleine Projekte rund um das Freibad freuen wir uns über Unterstützung."
-      },
-      {
-        date: "01.03.2026",
-        category: "Spendenprojekt",
-        title: "Spendenaufruf für ein neues Bademeister-Haus",
-        text: "Mit dem aktuellen Spendenaufruf sammeln wir Unterstützung für ein neues Bademeister-Haus im Freibad Winterstein."
       }
     ]
   },
@@ -76,26 +78,18 @@ const content = {
   infos: {
     pill: "Infos",
     title: "Freibad Emsetal",
-    lead: "Öffnungszeiten, Preisliste und Ausstattung des Freibads Winterstein auf einen Blick.",
+    lead: "Öffnungszeiten und Preisliste des Freibads Winterstein auf einen Blick.",
     openingHours: [
       ["Saison", "04.07.26-14.08.26"],
       ["Täglich", "10:00-19:00 Uhr"],
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€", },
-      { title: "Studenten / Rentner", day: "2,00€", },
-      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€", }
+      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€" },
+      { title: "Studenten / Rentner", day: "2,00€" },
+      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€" }
     ],
-    eveningNote: "",
-    amenities: [
-      "Schwimmerbecken",
-      "Kinderbecken",
-      "Liegewiesen",
-      "Babybecken",
-      "Volleyball-Spielfeld",
-      "Kiosk"
-    ]
+    eveningNote: ""
   },
 
   contact: {
@@ -106,41 +100,41 @@ const content = {
   },
 
   gallery: {
-  pill: "Verein",
-  title: "Galerie - Wer wir sind",
-  lead: "Einblicke in den Verein, unsere Arbeit und die Geschichte des Freibads.",
-  introTitle: "Wer wir sind",
-  introText:
-    "Hinter den Freibadfreunden Emsetal e.V. stehen engagierte Menschen, die sich gemeinsam für den Erhalt und die Zukunft des Freibads einsetzen.",
-  teamPhoto: {
-    title: "Unser Verein",
-    text: "Das Gruppenfoto zeigt einen Teil der Freibadfreunde Emsetal bei einer gemeinsamen Aktion vor dem Vereinsbanner.",
-    src: "freibadfreunde-team.jpg",
-    alt: "Gruppenfoto der Freibadfreunde Emsetal vor dem Eingang mit Vereinsbanner",
-    actionLabel: "Foto öffnen",
-    actionHref: "freibadfreunde-team.jpg"
+    pill: "Verein",
+    title: "Galerie - Wer wir sind",
+    lead: "Einblicke in den Verein, unsere Arbeit und die Geschichte des Freibads.",
+    introTitle: "Wer wir sind",
+    introText:
+      "Hinter den Freibadfreunden Emsetal e.V. stehen engagierte Menschen, die sich gemeinsam für den Erhalt und die Zukunft des Freibads einsetzen.",
+    teamPhoto: {
+      title: "August 2025",
+      info: "Vereinsgründung – Informationsveranstaltung in der Feuerwehr Winterstein",
+      src: "freibadfreunde-team.jpg",
+      alt: "Gruppenfoto der Freibadfreunde Emsetal vor dem Eingang mit Vereinsbanner",
+      actionLabel: "Foto öffnen",
+      actionHref: "freibadfreunde-team.jpg"
+    },
+    winterspielePhoto: {
+      title: "Förderung bei den Winterspielen",
+      text: "Dieses Bild zeigt die Freibadfreunde Emsetal bei der Übergabe einer Förderung der Winterspiele in Höhe von 2.000 Euro.",
+      src: "winterspiele-spende.jpg",
+      alt: "Freibadfreunde Emsetal bei einer Förderübergabe der Winterspiele über 2.000 Euro",
+      actionLabel: "Bild öffnen",
+      actionHref: "winterspiele-spende.jpg"
+    },
+    timeline: {
+      title: "Zeitstrahl Schwimmbad",
+      text: "Hier finden Sie den historischen Zeitstrahl mit Bildern und Stationen zur Entwicklung des Schwimmbads.",
+      actionLabel: "Zeitstrahl als PDF öffnen",
+      actionHref: "zeitstrahl-schwimmbad.pdf"
+    },
+    infoSheet: {
+      title: "Vereinsinfos & Ziele",
+      text: "Dieses Dokument enthält aktuelle Informationen zur Vereinsgründung, Neuigkeiten sowie die Ziele und Planungen für 2025 und 2026.",
+      actionLabel: "Infodokument öffnen",
+      actionHref: "freibadfreunde-info.pdf"
+    }
   },
-  winterspielePhoto: {
-    title: "Förderung bei den Winterspielen",
-    text: "Dieses Bild zeigt die Freibadfreunde Emsetal bei der Übergabe einer Förderung der Winterspiele in Höhe von 2.000 Euro.",
-    src: "winterspiele-spende.jpg",
-    alt: "Freibadfreunde Emsetal bei einer Förderübergabe der Winterspiele über 2.000 Euro",
-    actionLabel: "Bild öffnen",
-    actionHref: "winterspiele-spende.jpg"
-  },
-  timeline: {
-    title: "Zeitstrahl Schwimmbad",
-    text: "Hier finden Sie den historischen Zeitstrahl mit Bildern und Stationen zur Entwicklung des Schwimmbads.",
-    actionLabel: "Zeitstrahl als PDF öffnen",
-    actionHref: "zeitstrahl-schwimmbad.pdf"
-  },
-  infoSheet: {
-    title: "Vereinsinfos & Ziele",
-    text: "Dieses Dokument enthält aktuelle Informationen zur Vereinsgründung, Neuigkeiten sowie die Ziele und Planungen für 2025 und 2026.",
-    actionLabel: "Infodokument öffnen",
-    actionHref: "freibadfreunde-info.pdf"
-  }
-},
 
   imprint: {
     pill: "Rechtliches",
@@ -271,19 +265,39 @@ function renderNewsModal(data) {
       <p class="modal-lead">${data.lead}</p>
     </div>
 
-    ${
-      data.heroImage
-        ? `
-      <section class="modal-panel">
+    <section class="modal-panel">
+      ${
+        data.heroHighlight
+          ? `
+        <div style="margin-bottom: 1.1rem;">
+          <div class="news-item__meta">
+            <span>${data.heroHighlight.date}</span>
+            <span>${data.heroHighlight.category}</span>
+          </div>
+          <h3 class="news-item__title">${data.heroHighlight.title}</h3>
+          <p class="news-item__text" style="margin-bottom: 1rem;">
+            ${data.heroHighlight.text}
+          </p>
+          <div class="action-row" style="margin-bottom: 1.1rem;">
+            ${createActionButton(data.heroHighlight.actionLabel, data.heroHighlight.actionHref)}
+          </div>
+        </div>
+      `
+          : ""
+      }
+
+      ${
+        data.heroImage
+          ? `
         <img
           src="${data.heroImage.src}"
           alt="${data.heroImage.alt}"
-          style="width: 100%; display: block; border-radius: 20px; margin-bottom: 0.25rem; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
+          style="width: 100%; display: block; border-radius: 20px; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
         >
-      </section>
-    `
-        : ""
-    }
+      `
+          : ""
+      }
+    </section>
 
     <div class="news-feed">
       ${data.items
@@ -349,14 +363,7 @@ function renderInfosModal(data) {
             )
             .join("")}
         </div>
-        <p style="margin-top: 0.75rem;">${data.eveningNote}</p>
-      </section>
-
-      <section class="modal-panel">
-        <h3>Ausstattung</h3>
-        <ul class="modal-list">
-          ${data.amenities.map(item => `<li>${item}</li>`).join("")}
-        </ul>
+        ${data.eveningNote ? `<p style="margin-top: 0.75rem;">${data.eveningNote}</p>` : ""}
       </section>
     </div>
 
@@ -451,7 +458,9 @@ function renderGalleryModal(data) {
           alt="${data.teamPhoto.alt}"
           style="width: 100%; display: block; border-radius: 20px; margin: 0.9rem 0 1rem; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
         >
-        <p>${data.teamPhoto.text}</p>
+        <p style="margin: 0 0 0.85rem; color: var(--primary-strong); line-height: 1.55;">
+          ${data.teamPhoto.info}
+        </p>
         <div class="action-row" style="margin-top: 1rem;">
           ${createActionButton(data.teamPhoto.actionLabel, data.teamPhoto.actionHref)}
         </div>
