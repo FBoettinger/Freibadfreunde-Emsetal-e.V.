@@ -115,7 +115,7 @@ const content = {
       actionHref: "freibadfreunde-team.jpg"
     },
     winterspielePhoto: {
-      title: "Förderung bei den Winterspielen",
+      title: "Januar 2026",
       text: "Dieses Bild zeigt die Freibadfreunde Emsetal bei der Übergabe einer Förderung der Winterspiele in Höhe von 2.000 Euro.",
       src: "winterspiele-spende.jpg",
       alt: "Freibadfreunde Emsetal bei einer Förderübergabe der Winterspiele über 2.000 Euro",
