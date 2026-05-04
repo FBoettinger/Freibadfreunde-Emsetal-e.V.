@@ -43,6 +43,22 @@ const content = {
     actionHref: "#"
   },
 
+  benefiz: {
+    pill: "Benefizveranstaltung",
+    title: "Zum Erhalt des Freibades Winterstein",
+    lead: "Am 04.07.2026 findet im Freibad Winterstein eine Benefizveranstaltung mit Musik, Essen, Hüpfburg, Kinderschminken und Trike-Ausfahrten statt.",
+    date: "04.07.2026",
+    time: "13:00-01:00 Uhr",
+    location: "Freibad Winterstein",
+    flyerSrc: "benefizveranstaltung-freibad-winterstein-2026.jpg",
+    flyerAlt: "Flyer zur Benefizveranstaltung am 04.07.2026 zum Erhalt des Freibades Winterstein",
+    paypalLabel: "Jetzt mit PayPal spenden",
+    paypalHref: "https://www.paypal.com/donate/?hosted_button_id=RX8KZ9DMTHAKA",
+    calendarLabel: "Termin im Kalender speichern",
+    calendarHref: "benefizveranstaltung-freibad-winterstein-2026.ics",
+    imageLabel: "Flyer groß öffnen"
+  },
+
   news: {
     pill: "Bleiben Sie dran",
     title: "Aktuelles",
@@ -60,6 +76,16 @@ const content = {
       actionHref: "https://www.paypal.com/donate/?hosted_button_id=RX8KZ9DMTHAKA"
     },
     items: [
+      {
+        date: "04.07.2026",
+        category: "Benefizveranstaltung",
+        title: "Benefizveranstaltung im Freibad Winterstein",
+        text: "Von 13:00 bis 01:00 Uhr feiern wir gemeinsam für den Erhalt des Freibads. Den Flyer können Sie direkt als Pop-up öffnen oder den Termin speichern.",
+        modalKey: "benefiz",
+        actionLabel: "Flyer anzeigen",
+        calendarLabel: "Termin speichern",
+        calendarHref: "benefizveranstaltung-freibad-winterstein-2026.ics"
+      },
       {
         date: "22.03.2026",
         category: "Aktuelles",
@@ -181,17 +207,51 @@ const paypalDonateConfig = {
 
 const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
+const modalWindow = modalOverlay ? modalOverlay.querySelector(".modal-window") : null;
 const modalClose = document.getElementById("modal-close");
 const modalButtons = document.querySelectorAll("[data-modal-key]");
 let lastTrigger = null;
 
 function createActionButton(label, href) {
   const isPlaceholder = !href || href === "#";
+  const isCalendarFile = typeof href === "string" && href.toLowerCase().endsWith(".ics");
   const attrs = isPlaceholder
     ? 'href="#" data-placeholder-link="true"'
-    : `href="${href}" target="_blank" rel="noopener noreferrer"`;
+    : isCalendarFile
+      ? `href="${href}" type="text/calendar"`
+      : `href="${href}" target="_blank" rel="noopener noreferrer"`;
 
   return `<a class="btn btn--primary" ${attrs}>${label}</a>`;
+}
+
+function renderBenefizModal(data) {
+  return `
+    <div class="modal-header event-popup__header">
+      <span class="modal-pill">${data.pill}</span>
+      <h2 id="modal-title" class="modal-title">${data.title}</h2>
+      <p class="modal-lead">${data.lead}</p>
+    </div>
+
+    <section class="event-popup">
+      <a class="event-popup__flyer-link" href="${data.flyerSrc}" target="_blank" rel="noopener noreferrer" aria-label="${data.imageLabel}">
+        <img class="event-popup__flyer" src="${data.flyerSrc}" alt="${data.flyerAlt}" loading="eager">
+      </a>
+
+      <div class="event-popup__details">
+        <div class="event-popup__meta">
+          <span>${data.date}</span>
+          <span>${data.time}</span>
+          <span>${data.location}</span>
+        </div>
+        <div class="action-row event-popup__actions">
+          ${createActionButton(data.calendarLabel, data.calendarHref)}
+          ${createActionButton(data.paypalLabel, data.paypalHref)}
+          ${createActionButton(data.imageLabel, data.flyerSrc)}
+          <button class="btn btn--ghost" type="button" data-close-modal="true">Schließen</button>
+        </div>
+      </div>
+    </section>
+  `;
 }
 
 function renderDocumentModal(data) {
@@ -310,6 +370,14 @@ function renderNewsModal(data) {
           </div>
           <h3 class="news-item__title">${item.title}</h3>
           <p class="news-item__text">${item.text}</p>
+          ${
+            item.modalKey || item.calendarHref
+              ? `<div class="action-row" style="margin-top: 0.9rem;">
+                  ${item.modalKey ? `<button class="btn btn--primary" type="button" data-open-modal="${item.modalKey}">${item.actionLabel}</button>` : ""}
+                  ${item.calendarHref ? createActionButton(item.calendarLabel, item.calendarHref) : ""}
+                </div>`
+              : ""
+          }
         </article>
       `
         )
@@ -596,6 +664,7 @@ function renderPrivacyModal(data) {
 }
 
 function renderModal(key) {
+  if (key === "benefiz") return renderBenefizModal(content.benefiz);
   if (key === "membership") return renderDocumentModal(content.membership);
   if (key === "donation") return renderDonationModal(content.donation);
   if (key === "news") return renderNewsModal(content.news);
@@ -646,8 +715,14 @@ function renderDonateButton() {
 function openModal(key, trigger) {
   if (!modalOverlay || !modalContent) return;
 
+  const html = renderModal(key);
+  if (!html) return;
+
   lastTrigger = trigger || null;
-  modalContent.innerHTML = renderModal(key);
+  modalContent.innerHTML = html;
+  if (modalWindow) {
+    modalWindow.classList.toggle("modal-window--event", key === "benefiz");
+  }
   modalOverlay.classList.remove("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -670,6 +745,9 @@ function closeModal() {
 
   modalOverlay.classList.add("is-hidden");
   modalOverlay.setAttribute("aria-hidden", "true");
+  if (modalWindow) {
+    modalWindow.classList.remove("modal-window--event");
+  }
   modalContent.innerHTML = "";
   document.body.style.overflow = "";
 }
@@ -716,6 +794,11 @@ function wireModals() {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
 
+      if (target.dataset.openModal) {
+        openModal(target.dataset.openModal, lastTrigger);
+        return;
+      }
+
       if (target === modalOverlay || target.dataset.closeModal === "true") {
         closeModal();
       }
@@ -738,8 +821,32 @@ function wireModals() {
   });
 }
 
+function shouldShowBenefitPopup() {
+  const eventEnd = new Date("2026-07-05T03:00:00+02:00").getTime();
+  if (Number.isFinite(eventEnd) && Date.now() > eventEnd) return false;
+
+  try {
+    const storageKey = "benefizPopupShown20260704";
+    if (sessionStorage.getItem(storageKey) === "true") return false;
+    sessionStorage.setItem(storageKey, "true");
+    return true;
+  } catch (error) {
+    return true;
+  }
+}
+
+function openBenefitPopupOnce() {
+  if (!content.benefiz) return;
+  if (!shouldShowBenefitPopup()) return;
+
+  window.setTimeout(() => {
+    openModal("benefiz", null);
+  }, 650);
+}
+
 function init() {
   wireModals();
+  openBenefitPopupOnce();
 }
 
 document.addEventListener("DOMContentLoaded", init);

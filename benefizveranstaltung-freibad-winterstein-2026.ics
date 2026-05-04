@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Freibadfreunde Emsetal e.V.//Benefizveranstaltung//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:benefizveranstaltung-freibad-winterstein-2026@freibadfreundeemsetal.de
+DTSTAMP:20260504T190000Z
+DTSTART;TZID=Europe/Berlin:20260704T130000
+DTEND;TZID=Europe/Berlin:20260705T010000
+SUMMARY:Benefizveranstaltung zum Erhalt des Freibades Winterstein
+LOCATION:Freibad Winterstein
+DESCRIPTION:Benefizveranstaltung zum Erhalt des Freibades Winterstein.\nBeg
+ inn: 13:00 Uhr\, Ende: 01:00 Uhr.\nMit Alleinunterhalter\, DJs\, Bratwurst
+ \, Brätel\, Gulaschkanone\, Hüpfburg\, Kinderschminken und Trike-Ausfahrte
+ n.\nWeitere Informationen: https://freibadfreundeemsetal.de/
+URL:https://freibadfreundeemsetal.de/
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
