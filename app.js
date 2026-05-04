@@ -63,6 +63,22 @@ const content = {
     pill: "Bleiben Sie dran",
     title: "Aktuelles",
     lead: "Vereinsinformationen und aktuelle Meldungen:",
+    featuredItems: [
+      {
+        date: "04.07.2026",
+        category: "Benefizveranstaltung",
+        title: "Benefizveranstaltung im Freibad Winterstein",
+        text: "Von 13:00 bis 01:00 Uhr feiern wir gemeinsam für den Erhalt des Freibads. Den Flyer können Sie direkt als Pop-up öffnen oder den Termin speichern.",
+        image: {
+          src: "benefizveranstaltung-freibad-winterstein-2026.jpg",
+          alt: "Flyer zur Benefizveranstaltung am 04.07.2026 zum Erhalt des Freibades Winterstein"
+        },
+        modalKey: "benefiz",
+        actionLabel: "Flyer anzeigen",
+        calendarLabel: "Termin speichern",
+        calendarHref: "benefizveranstaltung-freibad-winterstein-2026.ics"
+      }
+    ],
     heroImage: {
       src: "bademeisterhaus-spendenaufruf.jpg",
       alt: "Spendenaufruf für ein neues Bademeister-Haus im Schwimmbad Winterstein"
@@ -76,16 +92,6 @@ const content = {
       actionHref: "https://www.paypal.com/donate/?hosted_button_id=RX8KZ9DMTHAKA"
     },
     items: [
-      {
-        date: "04.07.2026",
-        category: "Benefizveranstaltung",
-        title: "Benefizveranstaltung im Freibad Winterstein",
-        text: "Von 13:00 bis 01:00 Uhr feiern wir gemeinsam für den Erhalt des Freibads. Den Flyer können Sie direkt als Pop-up öffnen oder den Termin speichern.",
-        modalKey: "benefiz",
-        actionLabel: "Flyer anzeigen",
-        calendarLabel: "Termin speichern",
-        calendarHref: "benefizveranstaltung-freibad-winterstein-2026.ics"
-      },
       {
         date: "22.03.2026",
         category: "Aktuelles",
@@ -317,7 +323,61 @@ function renderDonationModal(data) {
   `;
 }
 
+function renderNewsActionRow(item) {
+  if (!item.modalKey && !item.actionHref && !item.calendarHref) return "";
+
+  return `
+    <div class="action-row news-feature-card__actions">
+      ${item.modalKey ? `<button class="btn btn--primary" type="button" data-open-modal="${item.modalKey}">${item.actionLabel}</button>` : ""}
+      ${item.actionHref ? createActionButton(item.actionLabel, item.actionHref) : ""}
+      ${item.calendarHref ? createActionButton(item.calendarLabel, item.calendarHref) : ""}
+    </div>
+  `;
+}
+
+function renderNewsFeatureCard(item) {
+  const imageMarkup = item.image
+    ? item.modalKey
+      ? `
+        <button class="news-feature-card__image-button" type="button" data-open-modal="${item.modalKey}" aria-label="${item.actionLabel}">
+          <img class="news-feature-card__image" src="${item.image.src}" alt="${item.image.alt}" loading="lazy">
+        </button>
+      `
+      : `
+        <img class="news-feature-card__image" src="${item.image.src}" alt="${item.image.alt}" loading="lazy">
+      `
+    : "";
+
+  return `
+    <section class="modal-panel news-feature-card">
+      <div class="news-feature-card__body">
+        <div class="news-item__meta">
+          <span>${item.date}</span>
+          <span>${item.category}</span>
+        </div>
+        <h3 class="news-item__title">${item.title}</h3>
+        <p class="news-item__text">${item.text}</p>
+        ${renderNewsActionRow(item)}
+      </div>
+      ${imageMarkup}
+    </section>
+  `;
+}
+
 function renderNewsModal(data) {
+  const featuredItems = Array.isArray(data.featuredItems) ? data.featuredItems : [];
+  const heroItem = data.heroHighlight
+    ? {
+        date: data.heroHighlight.date,
+        category: data.heroHighlight.category,
+        title: data.heroHighlight.title,
+        text: data.heroHighlight.text,
+        image: data.heroImage,
+        actionLabel: data.heroHighlight.actionLabel,
+        actionHref: data.heroHighlight.actionHref
+      }
+    : null;
+
   return `
     <div class="modal-header">
       <span class="modal-pill">${data.pill}</span>
@@ -325,39 +385,10 @@ function renderNewsModal(data) {
       <p class="modal-lead">${data.lead}</p>
     </div>
 
-    <section class="modal-panel">
-      ${
-        data.heroHighlight
-          ? `
-        <div style="margin-bottom: 1.1rem;">
-          <div class="news-item__meta">
-            <span>${data.heroHighlight.date}</span>
-            <span>${data.heroHighlight.category}</span>
-          </div>
-          <h3 class="news-item__title">${data.heroHighlight.title}</h3>
-          <p class="news-item__text" style="margin-bottom: 1rem;">
-            ${data.heroHighlight.text}
-          </p>
-          <div class="action-row" style="margin-bottom: 1.1rem;">
-            ${createActionButton(data.heroHighlight.actionLabel, data.heroHighlight.actionHref)}
-          </div>
-        </div>
-      `
-          : ""
-      }
-
-      ${
-        data.heroImage
-          ? `
-        <img
-          src="${data.heroImage.src}"
-          alt="${data.heroImage.alt}"
-          style="width: 100%; display: block; border-radius: 20px; box-shadow: 0 16px 36px rgba(12, 61, 84, 0.12);"
-        >
-      `
-          : ""
-      }
-    </section>
+    <div class="news-feed news-feed--featured">
+      ${featuredItems.map(item => renderNewsFeatureCard(item)).join("")}
+      ${heroItem ? renderNewsFeatureCard(heroItem) : ""}
+    </div>
 
     <div class="news-feed">
       ${data.items
@@ -370,14 +401,7 @@ function renderNewsModal(data) {
           </div>
           <h3 class="news-item__title">${item.title}</h3>
           <p class="news-item__text">${item.text}</p>
-          ${
-            item.modalKey || item.calendarHref
-              ? `<div class="action-row" style="margin-top: 0.9rem;">
-                  ${item.modalKey ? `<button class="btn btn--primary" type="button" data-open-modal="${item.modalKey}">${item.actionLabel}</button>` : ""}
-                  ${item.calendarHref ? createActionButton(item.calendarLabel, item.calendarHref) : ""}
-                </div>`
-              : ""
-          }
+          ${renderNewsActionRow(item)}
         </article>
       `
         )
@@ -794,12 +818,14 @@ function wireModals() {
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
 
-      if (target.dataset.openModal) {
-        openModal(target.dataset.openModal, lastTrigger);
+      const openModalTarget = target.closest("[data-open-modal]");
+      if (openModalTarget instanceof HTMLElement && openModalTarget.dataset.openModal) {
+        openModal(openModalTarget.dataset.openModal, lastTrigger);
         return;
       }
 
-      if (target === modalOverlay || target.dataset.closeModal === "true") {
+      const closeModalTarget = target.closest("[data-close-modal]");
+      if (target === modalOverlay || closeModalTarget) {
         closeModal();
       }
     });
