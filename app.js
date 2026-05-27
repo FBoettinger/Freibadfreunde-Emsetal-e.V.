@@ -117,9 +117,8 @@ const content = {
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
     prices: [
-      { title: "Erwachsene (ab 17 Jahre)", day: "4,00€" },
-      { title: "Studenten / Rentner", day: "2,00€" },
-      { title: "Kinder und Jugendliche (bis einschl. 16 Jahre)", day: "2,00€" }
+      { title: "Erwachsene", day: "2,00€", season: "30,00€" },
+      { title: "Kinder", day: "1,00€", season: "20,00€" }
     ],
     eveningNote: ""
   },
@@ -165,6 +164,12 @@ const content = {
       text: "Dieses Dokument enthält aktuelle Informationen zur Vereinsgründung, Neuigkeiten sowie die Ziele und Planungen für 2025 und 2026.",
       actionLabel: "Infodokument öffnen",
       actionHref: "freibadfreunde-info.pdf"
+    },
+    mdrVideo: {
+      title: "MDR-Beitrag: Freibad Winterstein",
+      text: "Hier ist der MDR-Beitrag über das Freibad Winterstein zur Badesaison direkt verlinkt.",
+      actionLabel: "MDR-Beitrag öffnen",
+      actionHref: "https://www.mdr.de/nachrichten/thueringen/west-thueringen/gotha/video-freibad-winterstein-badesaison-schwimmbad-100.html"
     }
   },
 
@@ -449,6 +454,7 @@ function renderInfosModal(data) {
               <h4 class="news-item__title">${price.title}</h4>
               <p class="news-item__text">
                 Eintritt: ${price.day}<br>
+                ${price.season ? `Saisonkarte: ${price.season}` : ""}
               </p>
             </article>
           `
@@ -569,6 +575,14 @@ function renderGalleryModal(data) {
       <p>${data.winterspielePhoto.text}</p>
       <div class="action-row" style="margin-top: 1rem;">
         ${createActionButton(data.winterspielePhoto.actionLabel, data.winterspielePhoto.actionHref)}
+      </div>
+    </section>
+
+    <section class="modal-panel">
+      <h3>${data.mdrVideo.title}</h3>
+      <p>${data.mdrVideo.text}</p>
+      <div class="action-row" style="margin-top: 1rem;">
+        ${createActionButton(data.mdrVideo.actionLabel, data.mdrVideo.actionHref)}
       </div>
     </section>
 
