@@ -112,7 +112,7 @@ const content = {
     title: "Freibad Emsetal",
     lead: "Öffnungszeiten und Preisliste des Freibads Winterstein auf einen Blick.",
     openingHours: [
-      ["Saison", "04.07.26-14.08.26"],
+      ["Saison", "04.07.26-16.08.26"],
       ["Täglich", "10:00-19:00 Uhr"],
       ["Hinweis", "Änderungen je nach Wetterlage oder Veranstaltungen möglich"]
     ],
