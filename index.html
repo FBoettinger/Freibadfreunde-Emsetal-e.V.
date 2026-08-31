@@ -1,86 +1,214 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="description" content="Freibadfreunde Emsetal e.V. – Aktuelle Öffnungszeiten, Eintrittspreise, Veranstaltungen und Informationen rund um das Freibad Winterstein." />
+  <meta name="theme-color" content="#073c35" />
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <meta name="description" content="Freibadfreunde Emsetal e.V. – Startseite mit direkten Zugängen zu Öffnungszeiten, Aktuellem, Kontakt, Mitglied / Förderer werden, Spenden und Galerie." />
-  <title>Freibadfreunde Emsetal e.V.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="canonical" href="https://freibadfreundeemsetal.de/">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>Freibadfreunde Emsetal e.V. | Freibad Winterstein</title>
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="home-shell">
-    <section class="orbit-stage" aria-label="Startseite Freibadfreunde Emsetal e.V.">
-      <div class="orbit-grid">
-        <button class="orbit-card orbit-card--infos" type="button" data-modal-key="infos" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Infos</span>
-          <h2 class="orbit-card__title">Öffnungszeiten &amp; Preise</h2>
-          <p class="orbit-card__text">Preisliste und Öffnungszeiten des Freibads.</p>
-          <span class="orbit-card__cta">Details öffnen</span>
-        </button>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-        <button class="orbit-card orbit-card--membership" type="button" data-modal-key="membership" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Mitmachen</span>
-          <h2 class="orbit-card__title">Mitglied / Förderer werden</h2>
-          <p class="orbit-card__text">Mitgliedsantrag und Fördervereinbarung gemeinsam öffnen.</p>
-          <span class="orbit-card__cta">Details öffnen</span>
-        </button>
+  <header class="hero" id="start">
+    <div class="hero__shade" aria-hidden="true"></div>
 
-        <div class="logo-core">
-          <div class="logo-core__glow" aria-hidden="true"></div>
-          <img
-            src="logo-freibadfreunde-emsetal-transparent.png"
-            alt="Logo Freibadfreunde Emsetal e.V."
-            class="site-logo"
-          />
+    <nav class="topbar shell" aria-label="Hauptnavigation">
+      <a class="mini-brand" href="#start" aria-label="Zur Startseite">
+        <img src="logo-freibadfreunde-emsetal-transparent.png" alt="Freibadfreunde Emsetal e.V." class="mini-brand__logo" />
+        <span class="mini-brand__text">Freibadfreunde Emsetal e.V.</span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="nav-link" type="button" data-modal-key="infos">Öffnungszeiten</button>
+        <a class="nav-link nav-link--primary nav-link--desktop" href="#wichtig" aria-label="Direkt zu Alles auf einen Blick">Alles auf einen Blick</a>
+        <a class="nav-link nav-link--primary nav-link--mobile" href="#wichtig" aria-label="Direkt zu Alles auf einen Blick">Alles auf einen Blick</a>
+      </div>
+    </nav>
+
+    <div class="hero__content shell">
+      <div class="hero__copy glass-panel">
+        <div class="hero__status-row">
+          <span class="status-pill" id="pool-status">Öffnungszeiten werden geladen …</span>
+          <span class="season-pill" id="season-label">Saison 2026</span>
         </div>
 
-        <button class="orbit-card orbit-card--news" type="button" data-modal-key="news" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Aktuelles</span>
-          <h2 class="orbit-card__title">Infos &amp; Neuigkeiten</h2>
-          <p class="orbit-card__text">Kurze Vereinsinfos und aktuelle Hinweise auf einen Blick.</p>
-          <span class="orbit-card__cta">Details öffnen</span>
+        <p class="eyebrow" id="hero-eyebrow">Freibad Winterstein</p>
+        <h1 id="hero-title">Sommer, Gemeinschaft<br>und Freibadliebe.</h1>
+        <p class="hero__lead" id="hero-lead">
+          Alles Wichtige zum Freibad Winterstein: aktuelle Öffnungszeiten, Preise,
+          Veranstaltungen und Möglichkeiten, unseren Verein zu unterstützen.
+        </p>
+
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="hero-primary-action" type="button" data-modal-key="infos">Öffnungszeiten &amp; Preise</button>
+          <a class="btn btn--glass" id="hero-secondary-action" href="#aktuell">Aktuelle Veranstaltungen</a>
+        </div>
+      </div>
+
+      <aside class="hero-dashboard" aria-label="Schnellinformationen">
+        <button class="quick-stat quick-stat--hours" id="today-status-card" type="button" data-modal-key="infos" data-status="upcoming">
+          <span class="quick-stat__label">Heute</span>
+          <strong class="quick-stat__value" id="today-hours">–</strong>
+          <span class="quick-stat__meta" id="today-hours-note">Aktuelle Öffnungszeit</span>
         </button>
 
-        <button class="orbit-card orbit-card--donation" type="button" data-modal-key="donation" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Unterstützen</span>
-          <h2 class="orbit-card__title">Spenden</h2>
-          <p class="orbit-card__text">Jeder Beitrag hilft direkt bei Erhalt und Pflege des Freibads.</p>
-          <span class="orbit-card__cta">Details öffnen</span>
+        <button class="quick-stat" id="season-info-card" type="button" data-modal-key="infos" data-mode="prices">
+          <span class="quick-stat__label" id="season-info-label">Tageskarte</span>
+          <strong class="quick-stat__value" id="season-info-value"><span id="price-adult">2,00 €</span> / <span id="price-child">1,00 €</span></strong>
+          <span class="quick-stat__meta" id="season-info-meta">Erwachsene / Kinder</span>
         </button>
 
-        <button class="orbit-card orbit-card--contact" type="button" data-modal-key="contact" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Kontakt</span>
-          <h2 class="orbit-card__title">Schreiben Sie uns</h2>
-          <p class="orbit-card__text">Kontaktformular öffnen und direkt mit uns in Verbindung treten.</p>
-          <span class="orbit-card__cta">Kontakt öffnen</span>
+        <button class="quick-stat quick-stat--season" id="season-status-card" type="button" data-event-id="season-extension" data-mode="active">
+          <span class="quick-stat__label" id="season-card-label">Gute Nachrichten</span>
+          <strong class="quick-stat__value" id="season-card-value">Bis 30.08.</strong>
+          <span class="quick-stat__meta" id="season-card-meta">Saison verlängert</span>
         </button>
+      </aside>
+    </div>
 
-        <button class="orbit-card orbit-card--gallery" type="button" data-modal-key="gallery" aria-haspopup="dialog">
-          <span class="orbit-card__tag">Verein</span>
-          <h2 class="orbit-card__title">Galerie - Wer wir sind</h2>
-          <p class="orbit-card__text">Bilder, Eindrücke und kurze Infos über unseren Verein entdecken.</p>
-          <span class="orbit-card__cta">Galerie öffnen</span>
-        </button>
+    <a class="hero__scroll" href="#hauptinhalt" aria-label="Weiter zum Inhalt">
+      <span>Entdecken</span>
+      <span aria-hidden="true">↓</span>
+    </a>
+  </header>
+
+  <main id="hauptinhalt">
+    <section class="section section--current" id="aktuell">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="current-section-eyebrow">Aktuell im Freibad</p>
+            <h2 id="current-section-title">Neuigkeiten &amp; Veranstaltungen</h2>
+          </div>
+          <p class="section-heading__text" id="current-section-text">
+            Wichtige Termine und Hinweise stehen hier direkt auf der Startseite – ohne langes Suchen.
+          </p>
+        </div>
+
+        <div class="event-grid" id="event-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section--essentials" id="wichtig">
+      <div class="shell">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="eyebrow">Alles auf einen Blick</p>
+            <h2>Was möchten Sie wissen?</h2>
+          </div>
+        </div>
+
+        <div class="essentials-grid">
+          <button class="feature-card feature-card--hours" type="button" data-modal-key="infos">
+            <span class="feature-card__number">01</span>
+            <div>
+              <span class="feature-card__tag">Besuch planen</span>
+              <h3>Öffnungszeiten &amp; Preise</h3>
+              <p>Aktuelle Zeiten, Tageskarten und Saisonkarten direkt ansehen.</p>
+            </div>
+            <span class="feature-card__link">Öffnen <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="feature-card" type="button" data-modal-key="news">
+            <span class="feature-card__number">02</span>
+            <div>
+              <span class="feature-card__tag">Auf dem Laufenden</span>
+              <h3>Infos &amp; Neuigkeiten</h3>
+              <p>Vereinsmeldungen, Projekte und Rückblicke aus dem Freibad.</p>
+            </div>
+            <span class="feature-card__link">Öffnen <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="feature-card" type="button" data-modal-key="membership">
+            <span class="feature-card__number">03</span>
+            <div>
+              <span class="feature-card__tag">Mitmachen</span>
+              <h3>Mitglied / Förderer werden</h3>
+              <p>Mitgliedsantrag und Fördervereinbarung bequem herunterladen.</p>
+            </div>
+            <span class="feature-card__link">Mitmachen <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="feature-card feature-card--support" type="button" data-modal-key="donation">
+            <span class="feature-card__number">04</span>
+            <div>
+              <span class="feature-card__tag">Unterstützen</span>
+              <h3>Spenden</h3>
+              <p>Jeder Beitrag hilft beim Erhalt und bei der Weiterentwicklung unseres Freibads.</p>
+            </div>
+            <span class="feature-card__link">Unterstützen <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="feature-card" type="button" data-modal-key="gallery">
+            <span class="feature-card__number">05</span>
+            <div>
+              <span class="feature-card__tag">Unser Verein</span>
+              <h3>Galerie – Wer wir sind</h3>
+              <p>Bilder, Vereinsgeschichte, Förderungen und der MDR-Beitrag.</p>
+            </div>
+            <span class="feature-card__link">Entdecken <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="feature-card" type="button" data-modal-key="contact">
+            <span class="feature-card__number">06</span>
+            <div>
+              <span class="feature-card__tag">Kontakt</span>
+              <h3>Schreiben Sie uns</h3>
+              <p>Fragen, Hinweise oder Hilfe anbieten? Wir freuen uns über Ihre Nachricht.</p>
+            </div>
+            <span class="feature-card__link">Kontakt <span aria-hidden="true">→</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--support">
+      <div class="shell">
+        <div class="support-banner">
+          <div class="support-banner__copy">
+            <p class="eyebrow">Gemeinsam für Winterstein</p>
+            <h2>Unser Freibad lebt vom Mitmachen.</h2>
+            <p>
+              Ob als Mitglied, Förderer, Helfer oder mit einer Spende – jede Unterstützung trägt dazu bei,
+              das Freibad für kommende Generationen zu erhalten.
+            </p>
+          </div>
+          <div class="support-banner__actions">
+            <button class="btn btn--light" type="button" data-modal-key="membership">Mitglied / Förderer werden</button>
+            <button class="btn btn--outline-light" type="button" data-modal-key="donation">Jetzt unterstützen</button>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-legal" aria-label="Rechtliche Hinweise">
-    <button class="site-legal__link" type="button" data-modal-key="imprint" aria-haspopup="dialog">
-      Impressum
-    </button>
-    <button class="site-legal__link" type="button" data-modal-key="privacy" aria-haspopup="dialog">
-      Datenschutz
-    </button>
+  <footer class="site-footer">
+    <div class="shell site-footer__inner">
+      <div class="site-footer__brand">
+        <img src="logo-freibadfreunde-emsetal-transparent.png" alt="Logo Freibadfreunde Emsetal e.V." />
+        <div>
+          <strong>Freibadfreunde Emsetal e.V.</strong>
+          <span>Gemeinsam für das Freibad Winterstein</span>
+        </div>
+      </div>
+
+      <div class="site-footer__links">
+        <button type="button" data-modal-key="contact">Kontakt</button>
+        <button type="button" data-modal-key="imprint">Impressum</button>
+        <button type="button" data-modal-key="privacy">Datenschutz</button>
+      </div>
+    </div>
   </footer>
 
   <div id="modal-overlay" class="modal-overlay is-hidden" aria-hidden="true">
@@ -90,7 +218,6 @@
     </section>
   </div>
 
-  <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
   <script src="app.js"></script>
 </body>
 </html>

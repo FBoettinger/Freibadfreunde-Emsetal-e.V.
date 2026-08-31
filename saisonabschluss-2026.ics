@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Freibadfreunde Emsetal e.V.//Saisonabschluss 2026//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:saisonabschluss-20260828@freibadfreundeemsetal.de
+DTSTAMP:20260815T180000Z
+DTSTART;TZID=Europe/Berlin:20260828T170000
+DTEND;TZID=Europe/Berlin:20260828T220000
+SUMMARY:Saisonabschluss & Abendschwimmen im Freibad Winterstein
+LOCATION:Freibad Winterstein
+DESCRIPTION:Saisonabschluss mit Abendschwimmen, Wasserball-Action mit Zorb & more, Musik, Getränken und Essen.
+END:VEVENT
+END:VCALENDAR
